@@ -2,11 +2,11 @@
   <div class="article-card">
     <router-link :to="'/article/' + article.id" class="card">
       <div class="thumb" :style="{
-        'background-image': `url(https://genshin.forevka.dev/${article.attributes.Hero.data.attributes.formats.large.url})`,
+        'background-image': `url(${article.attributes.Hero.data.attributes.formats.large.url})`,
       }"></div>
       <article>
         <h1>{{article.attributes.Title}}</h1>
-        <span>{{new Date(article.attributes.publishedAt).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour: "numeric", minute: "numeric"}) }}</span>
+        <span>{{new Date(article.attributes.publishedAt).toLocaleDateString('uk', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour: "numeric", minute: "numeric"}) }}</span>
       </article>
     </router-link>
   </div>
@@ -15,7 +15,6 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-
 
 export default defineComponent({
   props: ['article'],

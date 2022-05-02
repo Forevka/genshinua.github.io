@@ -4,7 +4,7 @@
     </div>
     <div v-else>
         <div ref="hero_image" class="hero-nav" :style="{
-    'background-image': `url(https://genshin.forevka.dev/${article.attributes.Hero.data.attributes.formats.large.url})`,
+    'background-image': `url(${article.attributes.Hero.data.attributes.formats.large.url})`,
     }">
             <div class="hero-nav__inner">
                 <h1>{{ article.attributes.Title }}</h1>

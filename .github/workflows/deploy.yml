@@ -28,4 +28,4 @@ jobs:
           github_token: ${{ secrets.GH_SECRET }}
           user_name: ${{ secrets.MY_USER_NAME }}
           user_email: ${{ secrets.MY_USER_EMAIL }}
-          commit_message: Update Vite2.x + Vue3.x + TypeScript Starter
+          commit_message: Update genshin front

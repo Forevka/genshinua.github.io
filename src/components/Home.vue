@@ -1,9 +1,11 @@
 <template>
-    <div v-if="isFetching">Fetching...</div>
+    <div v-if="isFetching" class="articles-list">
+        <div v-for="item in 9" :key="item" class="article">
+            <ArticleCardSkeleton/>
+        </div>
+    </div>
     <div v-else class="articles-list">
         <div v-for="item in data" :key="item.id" class="article">
-            <!--<article v-for="item in data" :key="item.id" class="article">
-            </article>-->
             <ArticleCard :article="item"/>
         </div>
     </div>
@@ -13,10 +15,12 @@
 import { defineComponent, ref } from 'vue'
 import api from '../api/client';
 import ArticleCard from './ArticleCard.vue';
+import ArticleCardSkeleton from './ArticleCardSkeleton.vue';
 
 export default defineComponent({
     components: {
         ArticleCard,
+        ArticleCardSkeleton,
     },
     setup() {
         const isFetching = ref(true);
@@ -66,7 +70,7 @@ export default defineComponent({
   }
   
   @media (min-width: 60em) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 </style>
