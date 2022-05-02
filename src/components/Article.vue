@@ -1,6 +1,6 @@
 <template>
     <div v-if="isFetching" class="loader">
-
+        <Loader/>
     </div>
     <div v-else>
         <div ref="hero_image" class="hero-nav" :style="{
@@ -25,8 +25,12 @@ import api from '../api/client';
 import Meta from '../api/models/meta';
 import Article from '../api/models/article';
 import { AxiosResponse } from 'axios';
+import Loader from './Loader.vue';
 
 export default defineComponent({
+    components: {
+        Loader,
+    },
     setup() {
         const isFetching = ref(true);
         const article = ref({} as Article);
