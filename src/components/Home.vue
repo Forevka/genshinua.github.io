@@ -1,4 +1,17 @@
 <template>
+    <!--<div class="hero-wrapper">
+        <div class="heroes">
+            <div class="hero-center1">
+            </div>
+            <div class="hero-center2">
+            </div>
+        </div>
+        <div class="text-lines">
+            <div class="line-1">Genshin UA</div>
+            <div class="line-2">Genshin UA</div>
+            <div class="line-3">Genshin UA</div>
+        </div>
+    </div>-->
     <div v-if="isFetching" class="articles-list">
         <div v-for="item in 9" :key="item" class="article">
             <ArticleCardSkeleton/>
@@ -52,6 +65,62 @@ export default defineComponent({
     }
 })
 </script>
+
+<style lang="scss" scoped>
+.hero-wrapper {
+	background:#222;
+	display:flex;
+	flex-flow:column wrap;
+	align-items:center;
+	justify-content:flex-start;
+}
+
+.hero-center1 {
+	width:750px;
+	margin-top:25px;
+	height:750px;
+	overflow:hidden;
+	display:flex;
+	align-items:flex-start;
+	justify-content:center;
+	
+	background:url(https://i.ibb.co/SJ7VfBz/Character-Albedo-Portrait.webp);
+	background-size:cover;
+	position:relative;
+	z-index:0;
+}
+
+.hero-center2 {
+	width:750px;
+	margin-top:25px;
+	height:750px;
+	overflow:hidden;
+	display:flex;
+	align-items:flex-start;
+	justify-content:center;
+	
+	background:url(https://i.ibb.co/zrzGfNM/Character-Bennett-Portrait.webp);
+	background-size:cover;
+	position:relative;
+	z-index:0;
+}
+
+
+.text-lines {
+	position:absolute;
+	top:450px;
+	font:900 100px/80px montserrat;
+	text-transform:uppercase;
+	color:transparent;
+	-webkit-text-stroke:1px #eee;
+	
+}
+
+.text-lines .line-2 {
+	color:#eee;
+	-webkit-text-stroke:0px #eee;
+}
+</style>
 
 <style lang="scss" scoped>
 .articles-list {

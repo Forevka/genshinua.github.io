@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import GithubSVG from './assets/github.svg'
+import Menu from './components/Menu/Menu.vue'
 
 const store = useStore()
 const user = ''
@@ -11,10 +12,11 @@ const stack = computed(() => {
 </script>
 
 <template>
-    <nav class="relative flex items-center justify-center capitalize text-lg pt-24">
+    <Menu></Menu>
+    <!--<nav class="relative flex items-center justify-center capitalize text-lg pt-24">
         <router-link class="inline pr-5" to="/" active-class="active">Home</router-link>
         <router-link class="inline" to="/about" active-class="active">About</router-link>
-    </nav>
+    </nav>-->
     <router-view class="p-24"></router-view>
     <footer>
         <p class="text-gray-400 text-xs text-center">
@@ -36,5 +38,9 @@ nav {
             height: 1.5px;
         }
     }
+}
+
+main.paimon-menu {
+    z-index: 1;
 }
 </style>
