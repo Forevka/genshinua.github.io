@@ -2,25 +2,67 @@
 
 }
 
-.article-content {
+
+.article-lead {
     width: 60vw;
     margin: 0 auto;
     line-height: 1.625;
 }
 
-.hero-nav{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.article-content {
+    width: 60vw;
+    margin: 0 auto;
+    line-height: 1.625;
+
+    p > strong {
+        background-image: url('/Item_Primogem.webp');
+        background-size: 24px;
+        background-repeat: no-repeat;
+        padding-left: 32px;
+        display: block;
+    }
+}
+
+.hero-nav {
     height: 400px;
     min-height: 105px;
+    max-height: 500px;
     background-size: cover;
     background-position: center;
     overflow: hidden;
-    .hero-nav__inner{
-        z-index: 1;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    .hero-nav__inner.common {
+        margin-left: auto;
     }
-    h1{
+
+    .hero-nav__inner {
+        margin-bottom: 2rem;
+        z-index: 1;
+
+        .title {
+            width: 100%;
+            color: white;
+            text-shadow: 1px 1px 1px rgb(0 0 0 / 50%), 1px -1px 1px rgb(0 0 0 / 50%), -1px 1px 1px rgb(0 0 0 / 50%), 1px 1px 1px rgb(0 0 0 / 50%);
+            font-size: 2.4em;
+            padding: 10px;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .common {
+            width: 100%; 
+            color: white;
+            text-shadow: 1px 1px 1px rgb(0 0 0 / 50%), 1px -1px 1px rgb(0 0 0 / 50%), -1px 1px 1px rgb(0 0 0 / 50%), 1px 1px 1px rgb(0 0 0 / 50%);
+            font-size: 1.0em;
+            padding: 10px;
+            background: rgba(0,0,0,0.2);
+        }
+    }
+    h1 {
         color: #efefef;
         font-size: 5vw;
     }

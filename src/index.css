@@ -1,5 +1,7 @@
 /* ./src/index.css */
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css);
+@import url(https://cdn.jsdelivr.net/gh/alphardex/aqua.css/dist/aqua.min.css);
 
 @tailwind base;
 @tailwind components;

@@ -8,6 +8,7 @@ export default interface Article {
 export interface Attributes {
     Title:               string;
     Content:             string;
+    LeadText:             string;
     Hero:                Image;
     createdAt:           Date;
     updatedAt:           Date;
