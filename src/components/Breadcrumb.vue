@@ -16,6 +16,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .breadcrumb {
+  --primary-color: hsl(196, 78%, 61%);
   --breadcrumb-divider: "/";
   --breadcrumb-divider-color: var(--secondary-color-darker);
   --breadcrumb-color: black;
