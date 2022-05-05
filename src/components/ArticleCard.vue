@@ -2,8 +2,11 @@
   <div class="article-card">
     <router-link :to="'/article/' + article.id" class="card">
       <div class="thumb" :style="{
-        'background-image': `url(${article.attributes.Hero.data.attributes.formats.large.url})`,
-      }"></div>
+        'background-image': `url(${hero.url})`,
+      }">
+      <i v-if="article.attributes.Base" class="fa-solid fa-thumbtack p-2 m-2" style="
+        background: rgba(0,0,0,0.2);
+        border-radius: 18%;"></i></div>
       <article>
         <h1>{{article.attributes.Title}}</h1>
         <span>{{new Date(article.attributes.publishedAt).toLocaleDateString('uk', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour: "numeric", minute: "numeric"}) }}</span>
@@ -15,9 +18,26 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import Article from '../api/models/article';
+import type { PropType } from 'vue'
 
 export default defineComponent({
-  props: ['article'],
+  props: {
+    article: {
+      type: Object as PropType<Article>,
+      required: true,
+    },
+  },
+  setup(props) {
+      const article = ref(props.article);
+      const hero = article.value.attributes.Hero.data.attributes.formats.large || article.value.attributes.Hero.data.attributes.formats.medium
+                || article.value.attributes.Hero.data.attributes.formats.small || article.value.attributes.Hero.data.attributes.formats.thumbnail;
+
+      return {
+        article,
+        hero,
+      }
+  },
 })
 </script>
 

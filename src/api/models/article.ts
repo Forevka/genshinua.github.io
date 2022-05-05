@@ -7,6 +7,8 @@ export default interface Article {
 
 export interface Attributes {
     Title:               string;
+    Base:                boolean;
+    InCarousel:          boolean;
     Content:             string;
     LeadText:             string;
     Hero:                Image;

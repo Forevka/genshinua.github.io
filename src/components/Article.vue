@@ -59,7 +59,7 @@ export default defineComponent({
         const firstRender = ref(true)
         const navigation = ref([
             {name: 'Головна', url: '/'}, 
-            {name: 'Новини', url: '/'},
+            {name: 'Новини', url: '/news'},
         ])
 
         return {
