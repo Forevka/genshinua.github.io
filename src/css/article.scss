@@ -2,6 +2,15 @@
 
 }
 
+.header {
+    display: inline-flex;
+    flex-flow: row;
+    align-content: space-between;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem;
+}
 
 .article-lead {
     width: 60vw;

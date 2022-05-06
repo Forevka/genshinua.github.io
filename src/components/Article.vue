@@ -4,7 +4,13 @@
         <Loader />
     </div>
     <div v-else class="container mx-auto">
-        <Breadcrumb :navigation="navigation"></Breadcrumb>
+        <div class="header">
+            <Breadcrumb :navigation="navigation"></Breadcrumb>
+            <div>
+                <Badge v-for="tag in article.attributes.tags.data" :key="tag.id" :tag="tag.attributes">
+                </Badge>
+            </div>
+        </div>
         <div
             ref="hero_image"
             class="hero-nav rounded-lg"
@@ -14,10 +20,18 @@
         >
             <div class="hero-nav__inner common">
                 <div class="common">
-                    <div class="date">
+                    <span class="date">
                         <i class="fa-solid fa-calendar"></i>
                         {{new Date(article.attributes.publishedAt).toLocaleDateString('uk', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour: "numeric", minute: "numeric"}) }}
-                    </div>
+                    </span>
+                    <span>
+                        <i class="fa-solid fa-eye px-2" ></i>
+                        <span style="color: white">{{article.attributes.Views || 1}}</span>
+                    </span>
+                    <span>
+                        <i class="fa-solid fa-user px-2"></i>
+                        <span style="color: white">{{article.attributes.authors.data.map(x => x.attributes.FullName).join(',')}}</span>
+                    </span>
                 </div>
             </div>
             <div class="hero-nav__inner title">
@@ -46,11 +60,13 @@ import {Size as ImageAttributes} from '../api/models/image';
 import { AxiosResponse } from 'axios'
 import Loader from './Loader.vue'
 import Breadcrumb from './Breadcrumb.vue'
+import Badge from './Badge.vue';
 
 export default defineComponent({
     components: {
         Loader,
         Breadcrumb,
+        Badge,
     },
     setup() {
         const isFetching = ref(true)
@@ -72,7 +88,7 @@ export default defineComponent({
     },
     async created() {
         this.isFetching = true
-        await api.get(`/posts/${this.$route.params.id}?populate=Hero&populate=createdBy`).then((data: AxiosResponse<Meta<Article>, any>) => {
+        await api.get(`/posts/${this.$route.params.id}?populate=Hero&populate=authors&populate=tags&populate=createdBy`).then((data: AxiosResponse<Meta<Article>, any>) => {
             console.log(data)
             this.article = data.data.data
             this.hero = this.article.attributes.Hero.data.attributes.formats.large || this.article.attributes.Hero.data.attributes.formats.medium
