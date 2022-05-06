@@ -115,7 +115,7 @@ export default defineComponent({
         async fetchNews() {
             this.isFetching = true;
 
-            await api.get(`/posts?populate=Hero&pagination[page]=${this.page}&pagination[pageSize]=${this.perPage}&sort=publishedAt:desc`).then((data) => {
+            await api.get(`/posts?populate=Hero&populate=authors&populate=tags&pagination[page]=${this.page}&pagination[pageSize]=${this.perPage}&sort=publishedAt:desc`).then((data) => {
                 console.log(data.data.data)
                 let newPosts = data.data.data as Article[];
                 let oldPosts = this.data.map((xx: Article) => xx.id);

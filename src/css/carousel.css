@@ -17,7 +17,7 @@
   --vc-pgn-height: 5px;
   --vc-pgn-margin: 5px;
   --vc-pgn-border-radius: 0;
-  --vc-pgn-background-color: var(--vc-clr-secondary);
+  --vc-pgn-background-color: black;
   --vc-pgn-active-color: var(--vc-clr-primary);
 }
 .carousel__pagination {
@@ -26,7 +26,7 @@
   list-style: none;
 }
 
-.carousel__pagination-button {
+button.carousel__pagination-button {
   margin: var(--vc-pgn-margin);
   width: var(--vc-pgn-width);
   height: var(--vc-pgn-height);
@@ -36,7 +36,7 @@
   background-color: var(--vc-pgn-background-color);
 }
 
-.carousel__pagination-button--active {
+button.carousel__pagination-button--active {
   background-color: var(--vc-pgn-active-color);
 }
 
@@ -50,9 +50,9 @@
   justify-content: center;
   align-items: center;
 }
-.carousel__prev,
-.carousel__next {
-  background-color: var(--vc-nav-background-color);
+button.carousel__prev,
+button.carousel__next {
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: var(--vc-nav-width);
   width: var(--vc-nav-width);
   height: var(--vc-nav-width);
@@ -71,13 +71,13 @@
 .carousel__prev {
   top: 50%;
   left: 0;
-  transform: translate(-50%, -50%);
+  transform: translate(15%, -50%);
 }
 
 .carousel__next {
   top: 50%;
   right: 0;
-  transform: translate(50%, -50%);
+  transform: translate(-15%, -50%);
 }
 
 .carousel--rtl .carousel__prev {
@@ -117,4 +117,15 @@
 
 .carousel__viewport {
   overflow: hidden;
+}
+/*custom*/
+button.carousel__prev--in-active, button.carousel__next--in-active {
+  display: none;
+}
+
+.carousel__pagination {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(140%);
 }

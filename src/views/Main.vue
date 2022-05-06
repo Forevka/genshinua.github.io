@@ -24,13 +24,14 @@
             </div>
 
             <div class="carousel-article">
-                <Carousel :items-to-show="2.5" :wrap-around="true" >
+                <Carousel :items-to-show="1" :autoplay="5000" >
                     <Slide v-for="item in carouselPosts" :key="item.id">
                         <ArticleCard :article="item"/>
                     </Slide>
 
                     <template #addons>
                         <Navigation />
+                        <Pagination />
                     </template>
                 </Carousel>
             </div>
@@ -43,6 +44,7 @@ import Article from '../api/models/article';
 import { defineComponent, ref } from 'vue'
 import api from '../api/client';
 import ArticleCard from '../components/ArticleCard.vue';
+// import ArticleCardCarousel from '../components/ArticleCardCarousel.vue';
 import ArticleCardSkeleton from '../components/ArticleCardSkeleton.vue';
 import Breadcrumb from '../components/Breadcrumb.vue';
 
@@ -57,6 +59,8 @@ export default defineComponent({
         Carousel,
         Slide,
         Navigation,
+        Pagination,
+        //ArticleCardCarousel,
     },
     setup() {
         const isFetching = ref(true);
@@ -79,13 +83,13 @@ export default defineComponent({
     async created() {
         this.isFetching = true;
         
-        await api.get(`/posts?populate=Hero&pagination[page]=1&pagination[pageSize]=1&sort=Base:desc`).then((data) => {
+        await api.get(`/posts?populate=Hero&populate=authors&populate=tags&pagination[page]=1&pagination[pageSize]=1&sort=Base:desc`).then((data) => {
             console.log(data.data.data)
             this.pinnedPost = data.data.data[0];
             console.log(this.pinnedPost)
         });
 
-        await api.get("/posts?populate=Hero&pagination[page]=1&pagination[pageSize]=4&sort=InCarousel:desc,publishedAt:desc").then((data) => {
+        await api.get("/posts?populate=Hero&populate=authors&populate=tags&pagination[page]=1&pagination[pageSize]=4&sort=InCarousel:desc,publishedAt:desc").then((data) => {
             console.log(data.data.data)
             this.carouselPosts.push(...data.data.data);
             console.log(this.data)
@@ -101,6 +105,10 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '../css/carousel.css';
+
+.carousel-article {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
 .hero-wrapper {
 	background:#222;
@@ -166,10 +174,24 @@ export default defineComponent({
     display: grid; 
     grid-template-columns: 1fr 2fr; 
     grid-template-rows: 1fr; 
-  gap: 0px 1em; 
+    gap: 0px 1em; 
     grid-template-areas: 
         ". ."; 
     
+}
+/*.articles-list > * {
+  border:2px solid red;
+}*/
+</style>
 
+<style lang="scss">
+
+.articles-list {
+    .carousel-article {
+        .card:hover {
+            top: 0px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    }
 }
 </style>

@@ -13,3 +13,8 @@ body, html{
     padding: 0;
     font-family: 'Montserrat', sans-serif;
 }
+
+.carousel__track, .carousel__viewport, .carousel {
+    height: 100%;
+    min-height: 100%;
+}
